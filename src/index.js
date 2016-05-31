@@ -1,4 +1,3 @@
-import { render } from 'react-dom';
 import React, { Component, PropTypes } from 'react';
 
 class Swipe extends Component {
@@ -19,12 +18,12 @@ class Swipe extends Component {
         onSwipeDown     : PropTypes.func,
         onSwipeLeft     : PropTypes.func,
         onSwipeRight    : PropTypes.func
-    }
+    };
 
     static defaultProps = {
         tagName : 'div',
         minDelta: 65
-    }
+    };
 
     get isSwipeHandler() {
         return this.props.onSwipeUp || this.props.onSwipeDown || this.props.onSwipeLeft || this.props.onSwipeRight;
@@ -40,7 +39,7 @@ class Swipe extends Component {
                 y : this._touch.pageY
             };
         }
-    }
+    };
 
     onTouchMove = e => {
         if(this._detecting || this._started) {
@@ -90,7 +89,7 @@ class Swipe extends Component {
             }
         }
 
-    }
+    };
 
     onTouchComplete = e => {
         if(this._started && this.validateTouch(e.changedTouches)) {
@@ -103,28 +102,28 @@ class Swipe extends Component {
         }
 
         return this;
-    }
+    };
 
-    onTouchEnd = this.onTouchComplete
-    onTouchCancel = this.onTouchComplete
+    onTouchEnd = this.onTouchComplete;
+    onTouchCancel = this.onTouchComplete;
 
     onSwipeStart = () => {
         this.props.onSwipeStart && this.props.onSwipeStart();
 
         return this;
-    }
+    };
 
     onSwipeMove = (x, y) => {
         this.props.onSwipeMove && this.props.onSwipeMove(x, y);
 
         return this;
-    }
+    };
 
     onSwipeEnd = () => {
         this.props.onSwipeEnd && this.props.onSwipeEnd();
 
         return this;
-    }
+    };
 
     swipeAction = () => {
         if(this.isSwipeHandler) {
@@ -150,7 +149,7 @@ class Swipe extends Component {
         }
 
         return this;
-    }
+    };
 
     swipeY = () => {
         if(this.props.minDelta < Math.abs(this._positionDelta.y)) {
@@ -160,7 +159,7 @@ class Swipe extends Component {
                 this.props.onSwipeDown && this.props.onSwipeDown();
             }
         }
-    }
+    };
 
     swipeX = () => {
         if(this.props.minDelta < Math.abs(this._positionDelta.x)) {
@@ -170,7 +169,7 @@ class Swipe extends Component {
                 this.props.onSwipeRight && this.props.onSwipeRight();
             }
         }
-    }
+    };
 
     clean = () => {
         this._positionStart = null;
@@ -178,12 +177,11 @@ class Swipe extends Component {
         this._started = false;
 
         return this;
-    }
+    };
 
     validateTouch = touches => {
         let result = false;
 
-        console.log(touches);
         for(let i = 0; i < touches.length; i++) {
             if(this._touch.identifier == touches[i].identifier) {
                 result = true;
@@ -192,7 +190,7 @@ class Swipe extends Component {
         }
 
         return result;
-    }
+    };
 
     render() {
         return(
@@ -204,65 +202,4 @@ class Swipe extends Component {
 
 }
 
-
-render((
-    <div>
-        <Swipe
-            className="test"
-            onSwipeUp={() => console.log('Swipe UP!')}
-            onSwipeDown={() => console.log('Swipe DOWN!')}
-            onSwipeLeft={() => console.log('Swipe LEFT!')}
-            onSwipeRight={() => console.log('Swipe RIGHT!')}
-        >
-            Swipe Handlers
-        </Swipe>
-        <Swipe
-            axis="x"
-            className="test"
-            onSwipeUp={() => console.log('Swipe UP!')}
-            onSwipeDown={() => console.log('Swipe DOWN!')}
-            onSwipeLeft={() => console.log('Swipe LEFT!')}
-            onSwipeRight={() => console.log('Swipe RIGHT!')}
-        >
-            Swipe axis X Handlers
-        </Swipe>
-        <Swipe
-            axis="y"
-            className="test"
-            onSwipeUp={() => console.log('Swipe UP!')}
-            onSwipeDown={() => console.log('Swipe DOWN!')}
-            onSwipeLeft={() => console.log('Swipe LEFT!')}
-            onSwipeRight={() => console.log('Swipe RIGHT!')}
-        >
-            Swipe axis Y Handlers
-        </Swipe>
-        <Swipe
-            className="test"
-            onSwipeStart={() => console.log('Swipe onSwipeStart!')}
-            onSwipeMove={() => console.log('Swipe onSwipeMove!')}
-            onSwipeEnd={() => console.log('Swipe onSwipeEnd!')}
-        >
-            Swipe Touch Handlers
-        </Swipe>
-        <Swipe
-            axis="x"
-            className="test"
-            onSwipeStart={() => console.log('Swipe onSwipeStart!')}
-            onSwipeMove={() => console.log('Swipe onSwipeMove!')}
-            onSwipeEnd={() => console.log('Swipe onSwipeEnd!')}
-        >
-            Swipe axis X Touch Handlers
-        </Swipe>
-        <Swipe
-            axis="y"
-            className="test"
-            onSwipeStart={() => console.log('Swipe onSwipeStart!')}
-            onSwipeMove={() => console.log('Swipe onSwipeMove!')}
-            onSwipeEnd={() => console.log('Swipe onSwipeEnd!')}
-        >
-            Swipe axis Y Touch Handlers
-        </Swipe>
-    </div>
-), document.getElementById('app'));
-
-// export default Swipe;
+export default Swipe;

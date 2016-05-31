@@ -1,19 +1,39 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-transform-class-properties": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "webpack": "^1.13.1"
+  "name": "ui-react.swipe",
+  "version": "1.0.0",
+  "description": "React swipe component",
+  "keywords": [
+    "react",
+    "swipe",
+    "component",
+    "swipe react",
+    "swipe component"
+  ],
+  "homepage": "http://ui-react.github.io/ui-react.swipe",
+  "bugs": {
+    "url": "https://github.com/ui-react/ui-react.swipe/issues",
+    "email": "lamo2k123@gmail.com"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Aleksey Novikov",
+    "email": "lamo2k123@gmail.com"
+  },
+  "contributors": [],
+  "main": "lib/index.js",
+  "repository": "ui-react/ui-react.swipe",
   "scripts": {
-    "watch": "webpack -w",
-    "build": "webpack"
+    "watch": "babel ./src/index.js -w -o ./lib/index.js",
+    "build": "babel ./src/index.js -o ./lib/index.js"
   },
   "dependencies": {
-    "react": "^15.1.0"
+    "react": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "6.9.0",
+    "babel-plugin-transform-class-properties": "6.9.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0"
   }
 }
