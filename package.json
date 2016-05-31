@@ -23,8 +23,8 @@
   "main": "lib/index.js",
   "repository": "ui-react/ui-react.swipe",
   "scripts": {
-    "watch": "babel ./src/index.js -w -o ./lib/index.js",
-    "build": "babel ./src/index.js -o ./lib/index.js"
+    "watch": "babel ./src -w -d ./lib",
+    "build": "babel ./src -d ./lib"
   },
   "dependencies": {
     "react": "*"
