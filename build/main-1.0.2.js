@@ -25867,7 +25867,7 @@
 	*/
 
 	exports.default = [{
-	    path: '/',
+	    path: '/ui-react.swipe',
 	    component: _layout2.default,
 	    indexRoute: {
 	        // component: Upload

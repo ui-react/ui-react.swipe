@@ -7,7 +7,7 @@ import Upload from 'page/upload';
 */
 
 export default [{
-    path        : '/',
+    path        : '/ui-react.swipe',
     component   : Layout,
     indexRoute  : {
         // component: Upload
