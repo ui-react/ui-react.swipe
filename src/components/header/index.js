@@ -11,7 +11,7 @@ class Header extends Component {
         return(
             <header className={style['header']}>
                 <div className={style['header__wrapper']}>
-                    <Link to="/" className={style['header__logo']}>
+                    <Link to="/ui-react.swipe" className={style['header__logo']}>
                         <span>{i18n.en['header-foundation']}</span>.<strong>{i18n.en['header-component']}</strong>
                     </Link>
                     <Nav />

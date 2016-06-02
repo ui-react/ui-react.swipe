@@ -26019,7 +26019,7 @@
 	                    { className: _style2.default['header__wrapper'] },
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: '/', className: _style2.default['header__logo'] },
+	                        { to: '/ui-react.swipe', className: _style2.default['header__logo'] },
 	                        _react2.default.createElement(
 	                            'span',
 	                            null,
@@ -26122,22 +26122,22 @@
 	                { className: _style2.default['nav'] },
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/docs', className: _style2.default['nav__link'] },
+	                    { to: '/ui-react.swipe/docs', className: _style2.default['nav__link'] },
 	                    _i18n2.default.en['nav-docs']
 	                ),
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/demo', className: _style2.default['nav__link'] },
+	                    { to: '/ui-react.swipe/demo', className: _style2.default['nav__link'] },
 	                    _i18n2.default.en['nav-demo']
 	                ),
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/releases', className: _style2.default['nav__link'] },
+	                    { to: '/ui-react.swipe/releases', className: _style2.default['nav__link'] },
 	                    _i18n2.default.en['nav-releases']
 	                ),
 	                _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/discuss', className: _style2.default['nav__link'] },
+	                    { to: '/ui-react.swipe/discuss', className: _style2.default['nav__link'] },
 	                    _i18n2.default.en['nav-discuss']
 	                ),
 	                _react2.default.createElement(
