@@ -26,6 +26,9 @@ module.exports = {
         }, {
             test: /\.pcss$/,
             loader: ExtractTextPlugin.extract(`css!postcss`)
+        }, {
+            test: /\.json$/,
+            loader: 'json'
         }]
     },
     plugins: [
@@ -43,11 +46,13 @@ module.exports = {
         extensions : [
             '',
             '.js',
+            '.json',
             '.pcss'
         ],
         alias : {
             component   : path.resolve(__dirname, 'src', 'components'),
-            page        : path.resolve(__dirname, 'src', 'pages')
+            page        : path.resolve(__dirname, 'src', 'pages'),
+            i18n        : path.resolve(__dirname, 'src', 'i18n')
         }
     },
     resolveLoader : {

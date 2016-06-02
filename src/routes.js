@@ -1,6 +1,7 @@
 import Layout from 'component/layout';
+
+import Demo from 'page/demo';
 /*
-import Home from 'component/home';
 
 import Upload from 'page/upload';
 */
@@ -11,12 +12,12 @@ export default [{
     indexRoute  : {
         // component: Upload
     },
-    childRoutes : [/*{
-        path        : 'upload',
-        component   : Upload,
+    childRoutes : [{
+        path        : 'demo',
+        component   : Demo,
         onEnter     : null,
         onLeave     : null
-    }*//*, {
+    }/*, {
      path: 'inbox',
      component: Inbox,
      childRoutes: [

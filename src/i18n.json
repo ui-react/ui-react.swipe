@@ -1,0 +1,16 @@
+{
+    "ru" : {
+        "header-foundation": "UI-React",
+        "header-component": "Swipe",
+        "last" : ""
+    },
+    "en" : {
+        "header-foundation": "UI-React",
+        "header-component": "Swipe",
+        "nav-docs" : "Docs",
+        "nav-demo" : "Demo",
+        "nav-releases" : "Releases",
+        "nav-discuss" : "Discuss",
+        "last": ""
+    }
+}

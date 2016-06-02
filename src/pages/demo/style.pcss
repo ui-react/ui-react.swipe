@@ -1,0 +1,115 @@
+@keyframes :local(bounceOut) {
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    20% {
+        transform: scale3d(.9, .9, .9);
+    }
+
+    50%, 55% {
+        opacity: 1;
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+}
+
+@keyframes :local(bounceOutMini) {
+    0% {
+        opacity: 1;
+        transform: scale3d(.8, .8, .8);
+    }
+    50%, 55% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    to {
+        transform: scale3d(.8, .8, .8);
+    }
+}
+
+:local {
+
+    .demo {
+
+        &__swipe-block {
+            width: 250px;
+            height: 250px;
+            border: solid 1px red;
+        }
+
+        &__swipe-indicators {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        &__swipe-indicator {
+            margin: 8px 0;
+            position: relative;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #f6f8f8;
+            border: solid 1px #e0e5e6;
+
+            &:before {
+                content: attr(data-label);
+                display: block;
+                line-height: 50px;
+                color: #20515b;
+                font-size: 16px;
+                position: absolute;
+                top: 0;
+                right: 100%;
+                padding: 0 15px;
+            }
+
+            &:after {
+                display: block;
+                content: '';
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-sizing: border-box;
+                border: solid 1px #464d72;
+                background-color: #c0c4d8;
+                opacity: 0;
+            }
+
+            &_animation {
+                &:after {
+                    animation-name: bounceOut;
+                }
+
+                &[data-label="onSwipeMove"] {
+                    &:after {
+                        opacity: 1;
+                        animation-name: bounceOutMini;
+                    }
+                }
+
+            }
+
+            &[data-label="onSwipeStart"]:after,
+            &[data-label="onSwipeEnd"]:after {
+                animation-duration: .75s;
+                animation-iteration-count: 1;
+            }
+
+            &[data-label="onSwipeMove"]:after {
+                animation-duration: .4s;
+                animation-iteration-count: infinite;
+            }
+
+        }
+
+    }
+
+}

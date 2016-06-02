@@ -1,6 +1,6 @@
 {
   "name": "ui-react.swipe-page",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "React swipe component demo",
   "homepage": "http://ui-react.github.io/ui-react.swipe",
   "bugs": {
@@ -21,7 +21,7 @@
     "react": "15.1.0",
     "react-dom": "15.1.0",
     "react-router": "2.4.1",
-    "ui-react.swipe": "1.0.0"
+    "ui-react.swipe": "1.0.2"
   },
   "devDependencies": {
     "babel-cli": "6.9.0",
@@ -32,6 +32,7 @@
     "babel-preset-react": "6.5.0",
     "css-loader": "0.23.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "json-loader": "^0.5.4",
     "postcss-loader": "0.9.1",
     "postcss-nested": "1.0.0",
     "webpack": "1.13.1"
