@@ -4,8 +4,6 @@ class Swipe extends Component {
 
     static propTypes = {
         tagName         : PropTypes.string,
-        className       : PropTypes.string,
-        style           : PropTypes.object,
 
         axis            : PropTypes.string,
         minDelta        : PropTypes.number,
@@ -24,6 +22,40 @@ class Swipe extends Component {
         tagName : 'div',
         minDelta: 65
     };
+
+    constructor() {
+        super(...arguments);
+
+        this._props = [
+            'tagName',
+            'axis',
+            'minDelta',
+            'onSwipeStart',
+            'onSwipeMove',
+            'onSwipeEnd',
+            'onSwipeUp',
+            'onSwipeDown',
+            'onSwipeLeft',
+            'onSwipeRight'
+        ];
+    }
+
+    get attr() {
+        if(this.props) {
+            let keys = Object.keys(this.props),
+                attr = {};
+
+            console.log(Swipe.propTypes);
+
+            keys.forEach(key => {
+                if(this._props.indexOf(key) == -1) {
+                    attr[key] = this.props[key];
+                }
+            });
+
+            return attr;
+        }
+    }
 
     get isSwipeHandler() {
         return this.props.onSwipeUp || this.props.onSwipeDown || this.props.onSwipeLeft || this.props.onSwipeRight;
@@ -194,7 +226,7 @@ class Swipe extends Component {
 
     render() {
         return(
-            <this.props.tagName className={this.props.className} style={this.props.style} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} onTouchCancel={this.onTouchCancel}>
+            <this.props.tagName {...this.attr} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} onTouchCancel={this.onTouchCancel}>
                 {this.props.children}
             </this.props.tagName>
         )
