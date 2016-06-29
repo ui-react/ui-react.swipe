@@ -45,8 +45,6 @@ class Swipe extends Component {
             let keys = Object.keys(this.props),
                 attr = {};
 
-            console.log(Swipe.propTypes);
-
             keys.forEach(key => {
                 if(this._props.indexOf(key) == -1) {
                     attr[key] = this.props[key];
@@ -85,7 +83,7 @@ class Swipe extends Component {
                             e.preventDefault();
 
                             this._started = true;
-                            this.onSwipeStart();
+                            this.onSwipeStart(this._positionStart.x, this._positionStart.y);
                         }
                         break;
                     case 'y':
@@ -93,14 +91,14 @@ class Swipe extends Component {
                             e.preventDefault();
 
                             this._started = true;
-                            this.onSwipeStart();
+                            this.onSwipeStart(this._positionStart.x, this._positionStart.y);
                         }
                         break;
                     default:
                         e.preventDefault();
 
                         this._started = true;
-                        this.onSwipeStart();
+                        this.onSwipeStart(this._positionStart.x, this._positionStart.y);
                 }
 
                 this._detecting = false;
@@ -127,9 +125,12 @@ class Swipe extends Component {
         if(this._started && this.validateTouch(e.changedTouches)) {
             e.preventDefault();
 
+            let x = this._positionStart.x - e.changedTouches[0].pageX,
+                y = this._positionStart.y - e.changedTouches[0].pageY;
+
             this
                 .swipeAction()
-                .onSwipeEnd()
+                .onSwipeEnd(x, y)
                 .clean();
         }
 
@@ -139,8 +140,8 @@ class Swipe extends Component {
     onTouchEnd = this.onTouchComplete;
     onTouchCancel = this.onTouchComplete;
 
-    onSwipeStart = () => {
-        this.props.onSwipeStart && this.props.onSwipeStart();
+    onSwipeStart = (x, y) => {
+        this.props.onSwipeStart && this.props.onSwipeStart(x, y);
 
         return this;
     };
@@ -151,8 +152,8 @@ class Swipe extends Component {
         return this;
     };
 
-    onSwipeEnd = () => {
-        this.props.onSwipeEnd && this.props.onSwipeEnd();
+    onSwipeEnd = (x, y) => {
+        this.props.onSwipeEnd && this.props.onSwipeEnd(x, y);
 
         return this;
     };
