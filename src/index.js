@@ -135,6 +135,8 @@ class Swipe extends Component {
                 .clean();
         }
 
+        this._detecting = false;
+
         return this;
     };
 
