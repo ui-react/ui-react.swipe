@@ -1,6 +1,6 @@
 {
   "name": "ui-react.swipe",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React swipe component",
   "keywords": [
     "react",
@@ -28,8 +28,8 @@
     "build": "babel ./src -d ./lib"
   },
   "dependencies": {
-    "prop-types": "*",
-    "react": "*"
+    "prop-types": "15.x.x",
+    "react": "15.x.x"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
