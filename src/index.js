@@ -4,19 +4,19 @@ import React, { Component } from 'react';
 class Swipe extends Component {
 
     static propTypes = {
-        tagName         : PropTypes.string,
+        tagName: PropTypes.string,
 
-        axis            : PropTypes.string,
-        minDelta        : PropTypes.number,
+        axis    : PropTypes.string,
+        minDelta: PropTypes.number,
 
-        onSwipeStart    : PropTypes.func,
-        onSwipeMove     : PropTypes.func,
-        onSwipeEnd      : PropTypes.func,
+        onSwipeStart: PropTypes.func,
+        onSwipeMove : PropTypes.func,
+        onSwipeEnd  : PropTypes.func,
 
-        onSwipeUp       : PropTypes.func,
-        onSwipeDown     : PropTypes.func,
-        onSwipeLeft     : PropTypes.func,
-        onSwipeRight    : PropTypes.func
+        onSwipeUp   : PropTypes.func,
+        onSwipeDown : PropTypes.func,
+        onSwipeLeft : PropTypes.func,
+        onSwipeRight: PropTypes.func
     };
 
     static defaultProps = {
@@ -39,6 +39,22 @@ class Swipe extends Component {
             'onSwipeLeft',
             'onSwipeRight'
         ];
+
+        this.wrapperRef = React.createRef();
+    }
+
+    componentDidMount() {
+        window.addEventListener('touchstart', this.onTouchStart, { passive: true });
+        window.addEventListener('touchmove', this.onTouchMove, { passive: true });
+        window.addEventListener('touchend', this.onTouchEnd, { passive: true });
+        window.addEventListener('touchcancel', this.onTouchCancel, { passive: true });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('touchstart', this.onTouchStart, { passive: true });
+        window.removeEventListener('touchmove', this.onTouchMove, { passive: true });
+        window.removeEventListener('touchend', this.onTouchEnd, { passive: true });
+        window.removeEventListener('touchcancel', this.onTouchCancel, { passive: true });
     }
 
     get attr() {
@@ -81,7 +97,6 @@ class Swipe extends Component {
                 switch(this.props.axis) {
                     case 'x':
                         if(Math.abs(x) >= Math.abs(y)) {
-                            e.preventDefault();
 
                             this._started = true;
                             this.onSwipeStart(this._positionStart.x, this._positionStart.y);
@@ -89,14 +104,12 @@ class Swipe extends Component {
                         break;
                     case 'y':
                         if(Math.abs(x) <= Math.abs(y)) {
-                            e.preventDefault();
 
                             this._started = true;
                             this.onSwipeStart(this._positionStart.x, this._positionStart.y);
                         }
                         break;
                     default:
-                        e.preventDefault();
 
                         this._started = true;
                         this.onSwipeStart(this._positionStart.x, this._positionStart.y);
@@ -106,7 +119,6 @@ class Swipe extends Component {
             }
 
             if(this._started && this.validateTouch(e.changedTouches)) {
-                e.preventDefault();
 
                 let x = this._positionStart.x - e.changedTouches[0].pageX,
                     y = this._positionStart.y - e.changedTouches[0].pageY;
@@ -124,7 +136,6 @@ class Swipe extends Component {
 
     onTouchComplete = e => {
         if(this._started && this.validateTouch(e.changedTouches)) {
-            e.preventDefault();
 
             let x = this._positionStart.x - e.changedTouches[0].pageX,
                 y = this._positionStart.y - e.changedTouches[0].pageY;
@@ -230,7 +241,7 @@ class Swipe extends Component {
 
     render() {
         return(
-            <this.props.tagName {...this.attr} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} onTouchCancel={this.onTouchCancel}>
+            <this.props.tagName {...this.attr} ref={this.wrapperRef}>
                 {this.props.children}
             </this.props.tagName>
         )
