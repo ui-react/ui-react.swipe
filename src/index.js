@@ -40,21 +40,26 @@ class Swipe extends Component {
             'onSwipeRight'
         ];
 
-        this.wrapperRef = React.createRef();
+        this.$wrapperRef = React.createRef();
     }
 
     componentDidMount() {
-        window.addEventListener('touchstart', this.onTouchStart, { passive: true });
-        window.addEventListener('touchmove', this.onTouchMove, { passive: true });
-        window.addEventListener('touchend', this.onTouchEnd, { passive: true });
-        window.addEventListener('touchcancel', this.onTouchCancel, { passive: true });
+        if(this.$wrapperRef.current) {
+            this.$wrapperRef.current.addEventListener('touchstart', this.onTouchStart, { passive: true });
+            this.$wrapperRef.current.addEventListener('touchmove', this.onTouchMove, { passive: true });
+            this.$wrapperRef.current.addEventListener('touchend', this.onTouchEnd, { passive: true });
+            this.$wrapperRef.current.addEventListener('touchcancel', this.onTouchCancel, { passive: true });
+        }
     }
 
     componentWillUnmount() {
-        window.removeEventListener('touchstart', this.onTouchStart, { passive: true });
-        window.removeEventListener('touchmove', this.onTouchMove, { passive: true });
-        window.removeEventListener('touchend', this.onTouchEnd, { passive: true });
-        window.removeEventListener('touchcancel', this.onTouchCancel, { passive: true });
+        if(this.$wrapperRef.current) {
+            this.$wrapperRef.current.removeEventListener('touchstart', this.onTouchStart);
+            this.$wrapperRef.current.removeEventListener('touchmove', this.onTouchMove);
+            this.$wrapperRef.current.removeEventListener('touchend', this.onTouchEnd);
+            this.$wrapperRef.current.removeEventListener('touchcancel', this.onTouchCancel);
+        }
+
     }
 
     get attr() {
@@ -241,7 +246,7 @@ class Swipe extends Component {
 
     render() {
         return(
-            <this.props.tagName {...this.attr} ref={this.wrapperRef}>
+            <this.props.tagName {...this.attr} ref={this.$wrapperRef}>
                 {this.props.children}
             </this.props.tagName>
         )
