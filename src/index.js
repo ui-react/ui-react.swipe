@@ -81,7 +81,6 @@ class Swipe extends Component {
                 switch(this.props.axis) {
                     case 'x':
                         if(Math.abs(x) >= Math.abs(y)) {
-                            e.preventDefault();
 
                             this._started = true;
                             this.onSwipeStart(this._positionStart.x, this._positionStart.y);
@@ -89,14 +88,12 @@ class Swipe extends Component {
                         break;
                     case 'y':
                         if(Math.abs(x) <= Math.abs(y)) {
-                            e.preventDefault();
 
                             this._started = true;
                             this.onSwipeStart(this._positionStart.x, this._positionStart.y);
                         }
                         break;
                     default:
-                        e.preventDefault();
 
                         this._started = true;
                         this.onSwipeStart(this._positionStart.x, this._positionStart.y);
@@ -106,7 +103,6 @@ class Swipe extends Component {
             }
 
             if(this._started && this.validateTouch(e.changedTouches)) {
-                e.preventDefault();
 
                 let x = this._positionStart.x - e.changedTouches[0].pageX,
                     y = this._positionStart.y - e.changedTouches[0].pageY;
@@ -124,7 +120,6 @@ class Swipe extends Component {
 
     onTouchComplete = e => {
         if(this._started && this.validateTouch(e.changedTouches)) {
-            e.preventDefault();
 
             let x = this._positionStart.x - e.changedTouches[0].pageX,
                 y = this._positionStart.y - e.changedTouches[0].pageY;
